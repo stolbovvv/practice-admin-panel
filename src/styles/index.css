@@ -1,0 +1,143 @@
+/* Imposrt fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+
+/* Custom properties */
+
+:root {
+  --clr-neutral-0: #fafaf9;
+  --clr-neutral-1: #f5f5f4;
+  --clr-neutral-2: #e7e5e4;
+  --clr-neutral-3: #d6d3d1;
+  --clr-neutral-4: #a8a29e;
+  --clr-neutral-5: #78716c;
+  --clr-neutral-6: #57534e;
+  --clr-neutral-7: #44403c;
+  --clr-neutral-8: #292524;
+  --clr-neutral-9: #1c1917;
+
+  --clr-red-1: #fda4af;
+  --clr-red-2: #fb7185;
+  --clr-red-3: #f43f5e;
+  --clr-red-4: #e11d48;
+  --clr-red-5: #be123c;
+
+  --clr-blue-1: #7dd3fc;
+  --clr-blue-2: #38bdf8;
+  --clr-blue-3: #0ea5e9;
+  --clr-blue-4: #0284c7;
+  --clr-blue-5: #0369a1;
+
+  --clr-green-1: #6ee7b7;
+  --clr-green-2: #34d399;
+  --clr-green-3: #10b981;
+  --clr-green-4: #059669;
+  --clr-green-5: #047857;
+
+  --clr-yellow-1: #fcd34d;
+  --clr-yellow-2: #fbbf24;
+  --clr-yellow-3: #f59e0b;
+  --clr-yellow-4: #d97706;
+  --clr-yellow-5: #b45309;
+
+  --font-family-base: 'Open Sans', sans-serif;
+  --font-family-accent: 'Montserrat', sans-serif;
+
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 4rem;
+
+  --font-weight-sm: 300;
+  --font-weight-md: 400;
+  --font-weight-lg: 700;
+  --font-weight-xl: 900;
+
+  --line-height-sm: 1.2;
+  --line-height-md: 1.4;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Minimal reset – <https://piccalil.li/blog/a-modern-css-reset> */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+svg,
+video,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* General styling */
+
+html,
+body {
+  height: 100%;
+  scrollbar-gutter: auto; /* or stable */
+}
+
+body {
+  background-color: var(--clr-neutral-0);
+
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-md);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+  color: var(--clr-neutral-9);
+}
