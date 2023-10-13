@@ -1,0 +1,96 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  border: 1px solid var(--clr-neutral-2);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--clr-neutral-0);
+}
+.filter > * + * {
+  margin-top: 1.25rem;
+}
+.filter__title {
+  font-family: var(--font-family-accent);
+  font-weight: var(--font-weight-xl);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+}
+.filter__subtitle {
+  font-family: var(--font-family-accent);
+  font-weight: var(--font-weight-xl);
+}
+.filter__buttons {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+}
+.filter__buttons > * + * {
+  margin-left: 0.625rem;
+}
+.filter__buttons-item {
+  flex: 0 0 auto;
+  width: calc(25% - 0.625rem * 3 / 4);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-lg);
+  text-transform: uppercase;
+  color: var(--clr-neutral-0);
+  outline-offset: 0.25rem;
+  cursor: pointer;
+}
+.filter__buttons-item_stone {
+  background-color: var(--clr-stone-2);
+}
+.filter__buttons-item_stone:is(:hover, :focus) {
+  background-color: var(--clr-stone-3);
+}
+.filter__buttons-item_stone:is(:active) {
+  background-color: var(--clr-stone-4);
+}
+.filter__buttons-item_fire {
+  background-color: var(--clr-yellow-2);
+}
+.filter__buttons-item_fire:is(:hover, :focus) {
+  background-color: var(--clr-yellow-3);
+}
+.filter__buttons-item_fire:is(:active) {
+  background-color: var(--clr-yellow-4);
+}
+.filter__buttons-item_water {
+  background-color: var(--clr-blue-2);
+}
+.filter__buttons-item_water:is(:hover, :focus) {
+  background-color: var(--clr-blue-3);
+}
+.filter__buttons-item_water:is(:active) {
+  background-color: var(--clr-blue-4);
+}
+.filter__buttons-item_air {
+  background-color: var(--clr-green-2);
+}
+.filter__buttons-item_air:is(:hover, :focus) {
+  background-color: var(--clr-green-3);
+}
+.filter__buttons-item_air:is(:active) {
+  background-color: var(--clr-green-4);
+}
+.filter__button-clear {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--clr-red-2);
+  font-family: var(--font-family-accent);
+  font-weight: var(--font-weight-xl);
+  text-transform: uppercase;
+  color: var(--clr-neutral-0);
+  outline-offset: 0.25rem;
+}
+.filter__button-clear:is(:hover, :focus) {
+  background: var(--clr-red-3);
+}
+.filter__button-clear:is(:active) {
+  background: var(--clr-red-4);
+}

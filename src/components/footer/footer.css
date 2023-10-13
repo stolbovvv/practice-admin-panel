@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  background-color: var(--clr-neutral-0);
+  border: 1px solid var(--clr-neutral-2);
+}
+.footer__text {
+  font-size: var(--font-size-sm);
+  color: var(--clr-neutral-5);
+}
+.footer__text > a {
+  color: inherit;
+}
+.footer__text > a:is(:hover, :focus) {
+  color: var(--clr-blue-3);
+}
+.footer__text > a:is(:active) {
+  color: var(--clr-blue-5);
+}

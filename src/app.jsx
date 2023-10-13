@@ -1,10 +1,26 @@
-import './style/app.css';
+import { Header } from './components/header/header';
+import { Footer } from './components/footer/footer';
+import { Filter } from './components/filter/filter';
+import { Form } from './components/form/form';
+import { List } from './components/list/list';
+
+import './styles/app.css';
 
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <div className="app">
+      <Header />
+      <main className="main">
+        <div className="main__cell">
+          <Form />
+          <Filter />
+        </div>
+        <div className="main__cell">
+          <List />
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

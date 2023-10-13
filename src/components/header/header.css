@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--clr-neutral-2);
+  border-radius: var(--radius-lg);
+  background-color: var(--clr-neutral-0);
+}
+.header > * + * {
+  margin-left: 0.625rem;
+}
+.header__logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: drop-shadow(0 0 1px var(--clr-neutral-9));
+}
+.header__title {
+  font-family: var(--font-family-accent);
+  font-weight: var(--font-weight-xl);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+}

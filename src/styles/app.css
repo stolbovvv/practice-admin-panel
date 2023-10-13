@@ -1,0 +1,30 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  width: min(75rem, 100%);
+  min-height: 100vh;
+  margin-inline: auto;
+  padding-block: 1.25rem;
+}
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: auto;
+  padding-block: 1.25rem;
+}
+.main > * + * {
+  margin-left: 1.25rem;
+}
+.main__cell:nth-child(1) {
+  position: sticky;
+  top: 1.25rem;
+  flex: 0 0 auto;
+  width: 25rem;
+}
+.main__cell:nth-child(2) {
+  flex: 1 1 auto;
+}
+.main__cell > * + * {
+  margin-top: 1.25rem;
+}

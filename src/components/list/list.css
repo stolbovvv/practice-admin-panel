@@ -1,0 +1,11 @@
+.list {
+  list-style: none;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #397524 #dfe9eb;
+}
+.list > * + * {
+  margin-top: 0.625rem;
+}

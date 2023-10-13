@@ -35,6 +35,12 @@
   --clr-green-4: #059669;
   --clr-green-5: #047857;
 
+  --clr-stone-1: #e7e5e4;
+  --clr-stone-2: #d6d3d1;
+  --clr-stone-3: #a8a29e;
+  --clr-stone-4: #78716c;
+  --clr-stone-5: #57534e;
+
   --clr-yellow-1: #fcd34d;
   --clr-yellow-2: #fbbf24;
   --clr-yellow-3: #f59e0b;
@@ -133,11 +139,14 @@ body {
 }
 
 body {
-  background-color: var(--clr-neutral-0);
-
+  color: var(--clr-neutral-9);
+  font-size: var(--font-size-md);
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-md);
-  font-size: var(--font-size-md);
   line-height: var(--line-height-md);
-  color: var(--clr-neutral-9);
+  background: var(--clr-neutral-1) url('/bg.png') center / cover no-repeat fixed;
+}
+
+.wrapper {
+  height: 100%;
 }
