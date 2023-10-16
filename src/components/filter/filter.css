@@ -22,7 +22,6 @@
 }
 .filter__buttons {
   margin-top: 0.25rem;
-  font-size: var(--font-size-sm);
 }
 .filter__buttons > * + * {
   margin-left: 0.625rem;
@@ -34,47 +33,69 @@
   cursor: pointer;
   border: none;
   border-radius: var(--radius-md);
+  background: none;
+  outline-offset: 0.25rem;
   font-weight: var(--font-weight-lg);
+  font-size: var(--font-size-sm);
   text-transform: uppercase;
   color: var(--clr-neutral-0);
-  outline-offset: 0.25rem;
   cursor: pointer;
 }
 .filter__buttons-item_stone {
-  background-color: var(--clr-stone-2);
+  border: 0.125rem solid var(--clr-stone-3);
+  color: var(--clr-stone-3);
 }
 .filter__buttons-item_stone:is(:hover, :focus) {
   background-color: var(--clr-stone-3);
+  color: var(--clr-neutral-0);
 }
+.filter__buttons-item_stone.is-active,
 .filter__buttons-item_stone:is(:active) {
+  border-color: var(--clr-stone-4);
   background-color: var(--clr-stone-4);
+  color: var(--clr-neutral-0);
 }
 .filter__buttons-item_fire {
-  background-color: var(--clr-yellow-2);
+  border: 0.125rem solid var(--clr-yellow-3);
+  color: var(--clr-yellow-3);
 }
 .filter__buttons-item_fire:is(:hover, :focus) {
   background-color: var(--clr-yellow-3);
+  color: var(--clr-neutral-0);
 }
+.filter__buttons-item_fire.is-active,
 .filter__buttons-item_fire:is(:active) {
+  border-color: var(--clr-yellow-4);
   background-color: var(--clr-yellow-4);
+  color: var(--clr-neutral-0);
 }
 .filter__buttons-item_water {
-  background-color: var(--clr-blue-2);
+  border: 0.125rem solid var(--clr-blue-3);
+  color: var(--clr-blue-3);
 }
 .filter__buttons-item_water:is(:hover, :focus) {
   background-color: var(--clr-blue-3);
+  color: var(--clr-neutral-0);
 }
+.filter__buttons-item_water.is-active,
 .filter__buttons-item_water:is(:active) {
+  border-color: var(--clr-blue-4);
   background-color: var(--clr-blue-4);
+  color: var(--clr-neutral-0);
 }
 .filter__buttons-item_air {
-  background-color: var(--clr-green-2);
+  border: 0.125rem solid var(--clr-green-3);
+  color: var(--clr-green-3);
 }
 .filter__buttons-item_air:is(:hover, :focus) {
   background-color: var(--clr-green-3);
+  color: var(--clr-neutral-0);
 }
+.filter__buttons-item_air.is-active,
 .filter__buttons-item_air:is(:active) {
+  border-color: var(--clr-green-4);
   background-color: var(--clr-green-4);
+  color: var(--clr-neutral-0);
 }
 .filter__button-clear {
   padding: 0.5em 1em;
