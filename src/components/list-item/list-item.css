@@ -1,52 +1,52 @@
-.item {
+.list-item {
   position: relative;
   display: flex;
-  padding: 0.625rem;
+  padding: 0.625rem 2.875rem 0.625rem 0.625rem;
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-lg);
   background-color: var(--clr-neutral-0);
   border: 1px solid var(--clr-neutral-2);
 }
-.item_stone {
+.list-item_stone {
   border-color: var(--clr-stone-3);
   background-color: var(--clr-stone-3);
 }
-.item_fire {
+.list-item_fire {
   border-color: var(--clr-yellow-3);
   background-color: var(--clr-yellow-3);
 }
-.item_water {
+.list-item_water {
   border-color: var(--clr-blue-3);
   background-color: var(--clr-blue-3);
 }
-.item_air {
+.list-item_wind {
   border-color: var(--clr-green-3);
   background-color: var(--clr-green-3);
 }
-.item > * + * {
+.list-item > * + * {
   margin-left: 0.625rem;
 }
-.item__image {
+.list-item__image {
   flex: 0 0 auto;
   width: 6.25rem;
   height: 6.25rem;
   border-radius: var(--radius-lg);
 }
-.item__body {
+.list-item__body {
   display: flex;
   flex-direction: column;
 }
-.item__body > * + * {
+.list-item__body > * + * {
   margin-top: 0.625rem;
 }
-.item__name {
+.list-item__name {
   font-family: var(--font-family-accent);
   font-weight: var(--font-weight-lg);
 }
-.item__text {
+.list-item__text {
   font-size: var(--font-size-sm);
 }
-.item__delete {
+.list-item__delete {
   position: absolute;
   top: 0.625rem;
   right: 0.625rem;
@@ -58,9 +58,9 @@
   color: var(--clr-neutral-0);
   cursor: pointer;
 }
-.item__delete:is(:hover, :focus) {
+.list-item__delete:is(:hover, :focus) {
   background-color: var(--clr-red-4);
 }
-.item__delete:is(:active) {
+.list-item__delete:is(:active) {
   background-color: var(--clr-red-5);
 }

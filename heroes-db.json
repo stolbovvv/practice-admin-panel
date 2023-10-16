@@ -2,22 +2,16 @@
   "heroes": [
     {
       "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "name": "Ahkari",
+      "description": "Ahkari is a Khajiit trader who can be found anywhere between Dawnstar and Riften.",
       "element": "fire"
     },
     {
       "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "name": "Veezara",
+      "description": "Veezara is an Argonian member of the Dark Brotherhood in Skyrim. A Shadowscale since birth, he once served as an assassin to the king of Black Marsh.",
       "element": "wind"
-    },
-    {
-      "id": 3,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
-      "element": "water"
     }
   ],
-  "filters": ["all", "fire", "water", "wind", "earth"]
+  "filters": ["fire", "water", "wind", "stone"]
 }

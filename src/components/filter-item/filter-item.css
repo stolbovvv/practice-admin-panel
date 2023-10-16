@@ -1,0 +1,71 @@
+.filter-item {
+  flex: 0 0 auto;
+  width: calc(25% - 0.625rem * 3 / 4);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  outline-offset: 0.25rem;
+  font-weight: var(--font-weight-lg);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  color: var(--clr-neutral-0);
+  cursor: pointer;
+}
+.filter-item_stone {
+  border: 0.125rem solid var(--clr-stone-3);
+  color: var(--clr-stone-3);
+}
+.filter-item_stone:is(:hover, :focus) {
+  background-color: var(--clr-stone-3);
+  color: var(--clr-neutral-0);
+}
+.filter-item_stone.is-active,
+.filter-item_stone:is(:active) {
+  border-color: var(--clr-stone-4);
+  background-color: var(--clr-stone-4);
+  color: var(--clr-neutral-0);
+}
+.filter-item_fire {
+  border: 0.125rem solid var(--clr-yellow-3);
+  color: var(--clr-yellow-3);
+}
+.filter-item_fire:is(:hover, :focus) {
+  background-color: var(--clr-yellow-3);
+  color: var(--clr-neutral-0);
+}
+.filter-item_fire.is-active,
+.filter-item_fire:is(:active) {
+  border-color: var(--clr-yellow-4);
+  background-color: var(--clr-yellow-4);
+  color: var(--clr-neutral-0);
+}
+.filter-item_water {
+  border: 0.125rem solid var(--clr-blue-3);
+  color: var(--clr-blue-3);
+}
+.filter-item_water:is(:hover, :focus) {
+  background-color: var(--clr-blue-3);
+  color: var(--clr-neutral-0);
+}
+.filter-item_water.is-active,
+.filter-item_water:is(:active) {
+  border-color: var(--clr-blue-4);
+  background-color: var(--clr-blue-4);
+  color: var(--clr-neutral-0);
+}
+.filter-item_wind {
+  border: 0.125rem solid var(--clr-green-3);
+  color: var(--clr-green-3);
+}
+.filter-item_wind:is(:hover, :focus) {
+  background-color: var(--clr-green-3);
+  color: var(--clr-neutral-0);
+}
+.filter-item_wind.is-active,
+.filter-item_wind:is(:active) {
+  border-color: var(--clr-green-4);
+  background-color: var(--clr-green-4);
+  color: var(--clr-neutral-0);
+}

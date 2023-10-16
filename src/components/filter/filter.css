@@ -21,81 +21,10 @@
   font-weight: var(--font-weight-xl);
 }
 .filter__buttons {
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 .filter__buttons > * + * {
   margin-left: 0.625rem;
-}
-.filter__buttons-item {
-  flex: 0 0 auto;
-  width: calc(25% - 0.625rem * 3 / 4);
-  padding: 0.5em 1em;
-  cursor: pointer;
-  border: none;
-  border-radius: var(--radius-md);
-  background: none;
-  outline-offset: 0.25rem;
-  font-weight: var(--font-weight-lg);
-  font-size: var(--font-size-sm);
-  text-transform: uppercase;
-  color: var(--clr-neutral-0);
-  cursor: pointer;
-}
-.filter__buttons-item_stone {
-  border: 0.125rem solid var(--clr-stone-3);
-  color: var(--clr-stone-3);
-}
-.filter__buttons-item_stone:is(:hover, :focus) {
-  background-color: var(--clr-stone-3);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_stone.is-active,
-.filter__buttons-item_stone:is(:active) {
-  border-color: var(--clr-stone-4);
-  background-color: var(--clr-stone-4);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_fire {
-  border: 0.125rem solid var(--clr-yellow-3);
-  color: var(--clr-yellow-3);
-}
-.filter__buttons-item_fire:is(:hover, :focus) {
-  background-color: var(--clr-yellow-3);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_fire.is-active,
-.filter__buttons-item_fire:is(:active) {
-  border-color: var(--clr-yellow-4);
-  background-color: var(--clr-yellow-4);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_water {
-  border: 0.125rem solid var(--clr-blue-3);
-  color: var(--clr-blue-3);
-}
-.filter__buttons-item_water:is(:hover, :focus) {
-  background-color: var(--clr-blue-3);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_water.is-active,
-.filter__buttons-item_water:is(:active) {
-  border-color: var(--clr-blue-4);
-  background-color: var(--clr-blue-4);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_air {
-  border: 0.125rem solid var(--clr-green-3);
-  color: var(--clr-green-3);
-}
-.filter__buttons-item_air:is(:hover, :focus) {
-  background-color: var(--clr-green-3);
-  color: var(--clr-neutral-0);
-}
-.filter__buttons-item_air.is-active,
-.filter__buttons-item_air:is(:active) {
-  border-color: var(--clr-green-4);
-  background-color: var(--clr-green-4);
-  color: var(--clr-neutral-0);
 }
 .filter__button-clear {
   padding: 0.5em 1em;
