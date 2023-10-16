@@ -21,8 +21,8 @@ function List() {
 
   return (
     <ul className="list">
-      {filteredHeroes.map(({ id, name, description, element }) => {
-        return <ListItem key={id} id={id} name={name} text={description} type={element} />;
+      {filteredHeroes.map(({ id, ...data }) => {
+        return <ListItem key={id} id={id} {...data} />;
       })}
     </ul>
   );

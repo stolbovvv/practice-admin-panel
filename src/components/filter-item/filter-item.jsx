@@ -3,16 +3,16 @@ import { actions } from '../../actions/actions';
 
 import './filter-item.css';
 
-function FilterItem({ data }) {
+function FilterItem({ data: { type, label } }) {
   const currentFilter = useSelector(({ currentFilter }) => currentFilter);
   const dispatch = useDispatch();
 
   return (
     <button
-      className={`filter-item filter-item_${data}${data === currentFilter ? ' is-active' : ''}`}
-      onClick={() => dispatch(actions.filterChanged(data))}
+      className={`filter-item filter-item_${type}${type === currentFilter ? ' is-active' : ''}`}
+      onClick={() => dispatch(actions.filterChanged(type))}
     >
-      {data}
+      {label}
     </button>
   );
 }

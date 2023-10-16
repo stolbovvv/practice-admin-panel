@@ -24,8 +24,8 @@ function Filter() {
       <h2 className="filter__title">Hero filter</h2>
       <h3 className="filter__subtitle">Hero element:</h3>
       <div className="filter__buttons">
-        {filters.map((item, index) => (
-          <FilterItem key={index} data={item} />
+        {filters.map(({ id, ...data }) => (
+          <FilterItem key={id} data={data} />
         ))}
       </div>
       <button className="filter__button-clear" onClick={() => dispatch(actions.filterChanged(null))}>

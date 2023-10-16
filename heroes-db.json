@@ -13,5 +13,26 @@
       "element": "wind"
     }
   ],
-  "filters": ["fire", "water", "wind", "stone"]
+  "filters": [
+    {
+      "id": 1,
+      "type": "fire",
+      "label": "Fire"
+    },
+    {
+      "id": 2,
+      "type": "water",
+      "label": "Water"
+    },
+    {
+      "id": 3,
+      "type": "wind",
+      "label": "Wind"
+    },
+    {
+      "id": 4,
+      "type": "stone",
+      "label": "Stone"
+    }
+  ]
 }
