@@ -20,5 +20,5 @@ export function useFetch() {
     [],
   );
 
-  return { fetchData };
+  return fetchData;
 }

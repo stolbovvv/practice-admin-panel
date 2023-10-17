@@ -1,22 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFetch } from '../../hooks/useFetch';
-import { actions } from '../../actions/actions';
+import { actions as actionsCommon } from '../../actions/actions';
+import { actions as actionsFilters } from '../../slices/filters';
 import { FilterItem } from '../filter-item/filter-item';
 
 import './filter.css';
 
 function Filter() {
-  const { fetchData } = useFetch();
+  const fetchData = useFetch();
   const filters = useSelector(({ filters }) => filters.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.filtersFetching());
-
-    fetchData('http://localhost:3000/filters')
-      .then((data) => dispatch(actions.filtersFetchingSuccess(data)))
-      .catch((err) => dispatch(actions.filtersFetchingFailure(err)));
+    dispatch(actionsCommon.fetchFilters(fetchData));
   }, []);
 
   return (
@@ -28,7 +25,7 @@ function Filter() {
           <FilterItem key={id} data={data} />
         ))}
       </div>
-      <button className="filter__button-clear" onClick={() => dispatch(actions.filterChanged(null))}>
+      <button className="filter__button-clear" onClick={() => dispatch(actionsFilters.CHANGED(null))}>
         Clear filter
       </button>
     </div>

@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useFetch } from '../../hooks/useFetch';
-import { actions } from '../../actions/actions';
+import { actions as actionsHeroes } from '../../slices/heroes';
 
 import './form.css';
 
 function Form() {
   const { reset, register, handleSubmit, formState } = useForm();
-  const { fetchData } = useFetch();
-  const filters = useSelector(({ filters }) => filters.data);
+  const fetchData = useFetch();
   const dispatch = useDispatch();
+  const filters = useSelector(({ filters }) => filters.data);
 
   const onSubmit = (data) => {
     fetchData('http://localhost:3000/heroes', { method: 'POST', body: JSON.stringify(data) })
-      .then((data) => dispatch(actions.heroCreated(data)))
+      .then((data) => dispatch(actionsHeroes.CREATED(data)))
       .catch((err) => console.error(err))
       .finally(() => reset());
   };

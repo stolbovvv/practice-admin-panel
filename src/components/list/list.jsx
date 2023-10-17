@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 import { useFetch } from '../../hooks/useFetch';
 import { actions } from '../../actions/actions';
 import { ListItem } from '../list-item/list-item';
@@ -9,27 +9,23 @@ import './list.css';
 
 function List() {
   const heroesSelector = createSelector(
-    ({ heroes }) => heroes.data,
-    ({ filters }) => filters.current,
-    (heroes, filters) => {
-      if (filters) {
-        return heroes.filter(({ element }) => element === filters);
+    (store) => store.heroes.data,
+    (store) => store.filters.current,
+    (heroes, filter) => {
+      if (filter) {
+        return heroes.filter(({ element }) => element === filter);
       } else {
         return heroes;
       }
     },
   );
 
-  const { fetchData } = useFetch();
+  const fetchData = useFetch();
   const heroes = useSelector(heroesSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const controller = new AbortController();
-
-    dispatch(actions.fetchHereos(fetchData, controller.signal));
-
-    return () => controller.abort();
+    dispatch(actions.fetchHereos(fetchData));
   }, []);
 
   return (

@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { actions } from '../../actions/actions';
+import { actions as actionsFilters } from '../../slices/filters';
 
 import './filter-item.css';
 
 function FilterItem({ data: { type, label } }) {
-  const currentFilter = useSelector(({ currentFilter }) => currentFilter);
+  const filter = useSelector(({ filters }) => filters.current);
   const dispatch = useDispatch();
 
   return (
     <button
-      className={`filter-item filter-item_${type}${type === currentFilter ? ' is-active' : ''}`}
-      onClick={() => dispatch(actions.filterChanged(type))}
+      className={`filter-item filter-item_${type}${type === filter ? ' is-active' : ''}`}
+      onClick={() => dispatch(actionsFilters.CHANGED(type))}
     >
       {label}
     </button>
