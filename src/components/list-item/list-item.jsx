@@ -16,7 +16,7 @@ function ListItem({ id, name, description, element }) {
 
   const deleteItem = () => {
     fetchData(`http://localhost:3000/heroes/${id}`, { method: 'DELETE' })
-      .then(() => dispatch(actionsHeroes.DELETED(id)))
+      .then(() => dispatch(actionsHeroes.deleted(id)))
       .catch((err) => console.log(err));
   };
 

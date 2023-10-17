@@ -13,7 +13,7 @@ function Form() {
 
   const onSubmit = (data) => {
     fetchData('http://localhost:3000/heroes', { method: 'POST', body: JSON.stringify(data) })
-      .then((data) => dispatch(actionsHeroes.CREATED(data)))
+      .then((data) => dispatch(actionsHeroes.created(data)))
       .catch((err) => console.error(err))
       .finally(() => reset());
   };

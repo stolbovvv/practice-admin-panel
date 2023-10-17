@@ -1,7 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useFetch } from '../hooks/useFetch';
 
-const handleFetching = createAsyncThunk('HEROES/FETCHING', () => {});
+const handleCreated = (state, action) => {
+  state.data.push(action.payload);
+};
+
+const handleDeleted = (state, action) => {
+  state.data = state.data.filter(({ id }) => id !== action.payload);
+};
 
 const handleFetchingLoading = (state) => {
   state.error = null;
@@ -19,27 +25,27 @@ const handleFetchingFailure = (state, action) => {
   state.process = 'failure';
 };
 
-const handleCreated = (state, action) => {
-  state.data.push(action.payload);
-};
-
-const handleDeleted = (state, action) => {
-  state.data = state.data.filter(({ id }) => id !== action.payload);
-};
+export const fetching = createAsyncThunk('heroes/fetching', async () => {
+  const fetchData = useFetch();
+  return await fetchData('http://localhost:3000/heroes');
+});
 
 export const { actions, reducer } = createSlice({
-  name: 'HEROES',
+  name: 'heroes',
   initialState: {
     data: [],
     error: null,
     process: 'pending',
   },
   reducers: {
-    // FETCHING: handleFetching,
-    FETCHING_LOADING: handleFetchingLoading,
-    FETCHING_SUCCESS: handleFetchingSuccess,
-    FETCHING_FAILURE: handleFetchingFailure,
-    CREATED: handleCreated,
-    DELETED: handleDeleted,
+    created: handleCreated,
+    deleted: handleDeleted,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetching.pending, handleFetchingLoading)
+      .addCase(fetching.rejected, handleFetchingFailure)
+      .addCase(fetching.fulfilled, handleFetchingSuccess)
+      .addDefaultCase(() => {});
   },
 });

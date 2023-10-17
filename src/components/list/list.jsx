@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
-import { useFetch } from '../../hooks/useFetch';
-import { actions } from '../../actions/actions';
+import { fetching as fetchingHeroes } from '../../slices/heroes';
 import { ListItem } from '../list-item/list-item';
 
 import './list.css';
@@ -20,12 +19,11 @@ function List() {
     },
   );
 
-  const fetchData = useFetch();
   const heroes = useSelector(heroesSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.fetchHereos(fetchData));
+    dispatch(fetchingHeroes());
   }, []);
 
   return (

@@ -11,6 +11,12 @@
       "name": "Veezara",
       "description": "Veezara is an Argonian member of the Dark Brotherhood in Skyrim. A Shadowscale since birth, he once served as an assassin to the king of Black Marsh.",
       "element": "wind"
+    },
+    {
+      "name": "Hello",
+      "description": "World!",
+      "element": "stone",
+      "id": 3
     }
   ],
   "filters": [

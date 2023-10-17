@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { useFetch } from '../hooks/useFetch';
 
 const handleFetchtchinLoading = (state) => {
   state.error = null;
@@ -20,8 +21,13 @@ const handleChanged = (state, action) => {
   state.current = action.payload;
 };
 
+export const fetching = createAsyncThunk('filters/fetching', async () => {
+  const fetchData = useFetch();
+  return await fetchData('http://localhost:3000/filters');
+});
+
 export const { actions, reducer } = createSlice({
-  name: 'FILTERS',
+  name: 'filters',
   initialState: {
     data: [],
     error: null,
@@ -29,9 +35,13 @@ export const { actions, reducer } = createSlice({
     process: 'pending',
   },
   reducers: {
-    FETCHING_LOADING: handleFetchtchinLoading,
-    FETCHING_SUCCESS: handleFetchtchinSuccess,
-    FETCHING_FAILURE: handleFetchtchinFailure,
-    CHANGED: handleChanged,
+    changed: handleChanged,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetching.pending, handleFetchtchinLoading)
+      .addCase(fetching.rejected, handleFetchtchinFailure)
+      .addCase(fetching.fulfilled, handleFetchtchinSuccess)
+      .addDefaultCase(() => {});
   },
 });

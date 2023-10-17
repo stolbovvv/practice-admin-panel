@@ -10,7 +10,7 @@ function FilterItem({ data: { type, label } }) {
   return (
     <button
       className={`filter-item filter-item_${type}${type === filter ? ' is-active' : ''}`}
-      onClick={() => dispatch(actionsFilters.CHANGED(type))}
+      onClick={() => dispatch(actionsFilters.changed(type))}
     >
       {label}
     </button>
