@@ -34,4 +34,12 @@ export const actions = {
   filterChanged: (data) => {
     return { type: 'FILTER_CHANGED', payload: data };
   },
+
+  fetchHereos: (fetchData, signal) => (dispatch) => {
+    dispatch(actions.heroesFetching);
+
+    fetchData('http://localhost:3000/heroes', { signal: signal })
+      .then((data) => dispatch(actions.heroesFetchingSuccess(data)))
+      .catch((err) => dispatch(actions.heroesFetchingFailure(err)));
+  },
 };

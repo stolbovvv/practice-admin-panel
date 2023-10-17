@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 import { useFetch } from '../../hooks/useFetch';
 import { actions } from '../../actions/actions';
 import { ListItem } from '../list-item/list-item';
@@ -7,23 +8,35 @@ import { ListItem } from '../list-item/list-item';
 import './list.css';
 
 function List() {
-  const filteredHeroes = useSelector(({ filteredHeroes }) => filteredHeroes);
-  const fetchData = useFetch();
+  const heroesSelector = createSelector(
+    ({ heroes }) => heroes.data,
+    ({ filters }) => filters.current,
+    (heroes, filters) => {
+      if (filters) {
+        return heroes.filter(({ element }) => element === filters);
+      } else {
+        return heroes;
+      }
+    },
+  );
+
+  const { fetchData } = useFetch();
+  const heroes = useSelector(heroesSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.filtersFetching());
+    const controller = new AbortController();
 
-    fetchData('http://localhost:3000/heroes')
-      .then((data) => dispatch(actions.heroesFetchingSuccess(data)))
-      .catch((err) => dispatch(actions.heroesFetchingFailure(err)));
+    dispatch(actions.fetchHereos(fetchData, controller.signal));
+
+    return () => controller.abort();
   }, []);
 
   return (
     <ul className="list">
-      {filteredHeroes.map(({ id, ...data }) => {
-        return <ListItem key={id} id={id} {...data} />;
-      })}
+      {heroes.map((item) => (
+        <ListItem key={item.id} {...item} />
+      ))}
     </ul>
   );
 }

@@ -7,8 +7,8 @@ import { FilterItem } from '../filter-item/filter-item';
 import './filter.css';
 
 function Filter() {
-  const filters = useSelector(({ filters }) => filters);
-  const fetchData = useFetch();
+  const { fetchData } = useFetch();
+  const filters = useSelector(({ filters }) => filters.data);
   const dispatch = useDispatch();
 
   useEffect(() => {

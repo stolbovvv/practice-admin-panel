@@ -7,9 +7,9 @@ import './form.css';
 
 function Form() {
   const { reset, register, handleSubmit, formState } = useForm();
-  const filters = useSelector(({ filters }) => filters);
+  const { fetchData } = useFetch();
+  const filters = useSelector(({ filters }) => filters.data);
   const dispatch = useDispatch();
-  const fetchData = useFetch();
 
   const onSubmit = (data) => {
     fetchData('http://localhost:3000/heroes', { method: 'POST', body: JSON.stringify(data) })

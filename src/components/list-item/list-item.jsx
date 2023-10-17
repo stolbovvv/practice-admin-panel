@@ -1,17 +1,17 @@
 import { useDispatch } from 'react-redux';
+import { animated, useSpring } from '@react-spring/web';
 import { useFetch } from '../../hooks/useFetch';
 import { actions } from '../../actions/actions';
-import { animated, useSpring } from '@react-spring/web';
 
 import './list-item.css';
 
 function ListItem({ id, name, description, element }) {
-  const fetchData = useFetch();
+  const { fetchData } = useFetch();
   const dispatch = useDispatch();
 
   const style = useSpring({
-    from: { y: '5%', opacity: 0 },
-    to: { y: '0%', opacity: 1 },
+    from: { opacity: 0 },
+    to: { opacity: 1 },
   });
 
   const deleteItem = () => {

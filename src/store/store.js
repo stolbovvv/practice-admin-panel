@@ -1,7 +1,19 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import { Provider as StoreProvider } from 'react-redux';
-import { reducer } from '../reducers/reducer';
+import { reducers } from '../reducers/reducer';
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const stringMiddleware = () => (next) => (action) => {
+  if (typeof action === 'string') {
+    return next({ type: action });
+  } else {
+    return next(action);
+  }
+};
+
+const store = createStore(
+  combineReducers(reducers),
+  compose(applyMiddleware(ReduxThunk, stringMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
+);
 
 export { store, StoreProvider };
