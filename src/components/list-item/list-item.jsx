@@ -1,13 +1,10 @@
-import { useDispatch } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
-import { useFetch } from '../../hooks/useFetch';
-import { deleted as deletedHero } from '../../slices/heroes';
+import { useDeleteHeroMutation } from '../../api/api';
 
 import './list-item.css';
 
 function ListItem({ id, name, description, element }) {
-  const fetchData = useFetch();
-  const dispatch = useDispatch();
+  const [deleteHero] = useDeleteHeroMutation();
 
   const style = useSpring({
     from: { opacity: 0 },
@@ -15,9 +12,7 @@ function ListItem({ id, name, description, element }) {
   });
 
   const deleteItem = () => {
-    fetchData(`http://localhost:3000/heroes/${id}`, { method: 'DELETE' })
-      .then(() => dispatch(deletedHero(id)))
-      .catch((err) => console.log(err));
+    deleteHero(id).unwrap();
   };
 
   return (
