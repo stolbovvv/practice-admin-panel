@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { animated, useSpring } from '@react-spring/web';
 import { useFetch } from '../../hooks/useFetch';
-import { actions as actionsHeroes } from '../../slices/heroes';
+import { deleted as deletedHero } from '../../slices/heroes';
 
 import './list-item.css';
 
@@ -16,7 +16,7 @@ function ListItem({ id, name, description, element }) {
 
   const deleteItem = () => {
     fetchData(`http://localhost:3000/heroes/${id}`, { method: 'DELETE' })
-      .then(() => dispatch(actionsHeroes.deleted(id)))
+      .then(() => dispatch(deletedHero(id)))
       .catch((err) => console.log(err));
   };
 

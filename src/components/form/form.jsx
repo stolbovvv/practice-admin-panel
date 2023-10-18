@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useFetch } from '../../hooks/useFetch';
-import { actions as actionsHeroes } from '../../slices/heroes';
+import { selectAll as selectAllFilters } from '../../slices/filters';
+import { created as createdHero } from '../../slices/heroes';
 
 import './form.css';
 
@@ -9,11 +10,11 @@ function Form() {
   const { reset, register, handleSubmit, formState } = useForm();
   const fetchData = useFetch();
   const dispatch = useDispatch();
-  const filters = useSelector(({ filters }) => filters.data);
+  const filters = useSelector(selectAllFilters);
 
   const onSubmit = (data) => {
     fetchData('http://localhost:3000/heroes', { method: 'POST', body: JSON.stringify(data) })
-      .then((data) => dispatch(actionsHeroes.created(data)))
+      .then((data) => dispatch(createdHero(data)))
       .catch((err) => console.error(err))
       .finally(() => reset());
   };

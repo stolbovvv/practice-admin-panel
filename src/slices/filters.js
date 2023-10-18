@@ -1,47 +1,48 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { useFetch } from '../hooks/useFetch';
 
-const handleFetchtchinLoading = (state) => {
-  state.error = null;
-  state.process = 'loading';
-};
+const adapter = createEntityAdapter();
 
-const handleFetchtchinSuccess = (state, action) => {
-  state.data = action.payload;
-  state.error = null;
-  state.process = 'success';
-};
-
-const handleFetchtchinFailure = (state, action) => {
-  state.error = action.payload;
-  state.process = 'failure';
-};
-
-const handleChanged = (state, action) => {
-  state.current = action.payload;
-};
-
-export const fetching = createAsyncThunk('filters/fetching', async () => {
+const fetching = createAsyncThunk('filters/fetching', async () => {
   const fetchData = useFetch();
   return await fetchData('http://localhost:3000/filters');
 });
 
-export const { actions, reducer } = createSlice({
+const { actions, reducer } = createSlice({
   name: 'filters',
-  initialState: {
-    data: [],
+  initialState: adapter.getInitialState({
     error: null,
     current: null,
     process: 'pending',
-  },
+  }),
   reducers: {
-    changed: handleChanged,
+    changed: (state, action) => {
+      state.current = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetching.pending, handleFetchtchinLoading)
-      .addCase(fetching.rejected, handleFetchtchinFailure)
-      .addCase(fetching.fulfilled, handleFetchtchinSuccess)
+      .addCase(fetching.pending, (state) => {
+        state.error = null;
+        state.process = 'loading';
+      })
+      .addCase(fetching.rejected, (state, action) => {
+        state.error = action.payload;
+        state.process = 'failure';
+      })
+      .addCase(fetching.fulfilled, (state, action) => {
+        adapter.setAll(state, action.payload);
+        state.error = null;
+        state.process = 'success';
+      })
       .addDefaultCase(() => {});
   },
 });
+
+export default reducer;
+
+export const { selectAll } = adapter.getSelectors((state) => state.filters);
+
+export const { changed } = actions;
+
+export { fetching };

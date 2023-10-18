@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { actions as actionsFilters } from '../../slices/filters';
+import { changed as changedFilter } from '../../slices/filters';
 
 import './filter-item.css';
 
@@ -10,7 +10,7 @@ function FilterItem({ data: { type, label } }) {
   return (
     <button
       className={`filter-item filter-item_${type}${type === filter ? ' is-active' : ''}`}
-      onClick={() => dispatch(actionsFilters.changed(type))}
+      onClick={() => dispatch(changedFilter(type))}
     >
       {label}
     </button>

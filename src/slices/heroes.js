@@ -1,51 +1,50 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { useFetch } from '../hooks/useFetch';
 
-const handleCreated = (state, action) => {
-  state.data.push(action.payload);
-};
+const adapter = createEntityAdapter();
 
-const handleDeleted = (state, action) => {
-  state.data = state.data.filter(({ id }) => id !== action.payload);
-};
-
-const handleFetchingLoading = (state) => {
-  state.error = null;
-  state.process = 'loading';
-};
-
-const handleFetchingSuccess = (state, action) => {
-  state.data = action.payload;
-  state.error = null;
-  state.process = 'success';
-};
-
-const handleFetchingFailure = (state, action) => {
-  state.error = action.payload;
-  state.process = 'failure';
-};
-
-export const fetching = createAsyncThunk('heroes/fetching', async () => {
+const fetching = createAsyncThunk('heroes/fetching', async () => {
   const fetchData = useFetch();
   return await fetchData('http://localhost:3000/heroes');
 });
 
-export const { actions, reducer } = createSlice({
+const { actions, reducer } = createSlice({
   name: 'heroes',
-  initialState: {
-    data: [],
+  initialState: adapter.getInitialState({
     error: null,
     process: 'pending',
-  },
+  }),
   reducers: {
-    created: handleCreated,
-    deleted: handleDeleted,
+    created: (state, action) => {
+      adapter.addOne(state, action.payload);
+    },
+    deleted: (state, action) => {
+      adapter.removeOne(state, action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetching.pending, handleFetchingLoading)
-      .addCase(fetching.rejected, handleFetchingFailure)
-      .addCase(fetching.fulfilled, handleFetchingSuccess)
+      .addCase(fetching.pending, (state) => {
+        state.error = null;
+        state.process = 'loading';
+      })
+      .addCase(fetching.rejected, (state, action) => {
+        state.error = action.payload;
+        state.process = 'failure';
+      })
+      .addCase(fetching.fulfilled, (state, action) => {
+        adapter.setAll(state, action.payload);
+        state.error = null;
+        state.process = 'success';
+      })
       .addDefaultCase(() => {});
   },
 });
+
+export default reducer;
+
+export const { selectAll } = adapter.getSelectors((state) => state.heroes);
+
+export const { created, deleted } = actions;
+
+export { fetching };

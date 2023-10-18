@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { actions as actionsFilters, fetching as fetchingFilters } from '../../slices/filters';
+import { changed as changedFilter, fetching as fetchingFilters, selectAll as selectAllFilters } from '../../slices/filters';
 import { FilterItem } from '../filter-item/filter-item';
 
 import './filter.css';
 
 function Filter() {
-  const filters = useSelector(({ filters }) => filters.data);
+  const filters = useSelector(selectAllFilters);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Filter() {
           <FilterItem key={id} data={data} />
         ))}
       </div>
-      <button className="filter__button-clear" onClick={() => dispatch(actionsFilters.changed(null))}>
+      <button className="filter__button-clear" onClick={() => dispatch(changedFilter(null))}>
         Clear filter
       </button>
     </div>
